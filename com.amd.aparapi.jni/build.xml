@@ -16,11 +16,11 @@ First consider editing the properties in build.properties
 
    <!-- Ideally this would be the latest version of Java but not everyone is going to have it installed -->
    <!-- Additionally we want to avoid "Class not found: javac1.8" errors from old Ant versions (i.e. Eclipse) -->
-   <property name="build.compiler" value="javac1.7"/>
-   <property name="ant.build.javac.source" value="1.7"/>
-   <property name="ant.build.javac.target" value="1.7"/>
+   <property name="build.compiler" value="javac1.8"/>
+   <property name="ant.build.javac.source" value="1.8"/>
+   <property name="ant.build.javac.target" value="1.8"/>
 
-   <property name="amd.app.sdk.version" value="2.9-1"/>
+   <property name="amd.app.sdk.version" value="3.0"/>
    
    <property environment="env" />
    
@@ -167,6 +167,28 @@ First consider editing the properties in build.properties
 
 	  <!-- Check for Visual Studio Compiler -->
 	  <!-- This needs to be in descending order to properly handle multiple installations -->
+	  <available property="msvc.32.14.0.exists" file="C:/Program Files/Microsoft Visual Studio 14.0\VC\bin" type="dir"/>
+      <condition property="msvc.dir" value="c:/Program Files/Microsoft Visual Studio 14.0">
+         <and>
+            <os family="windows" />
+            <isset property="msvc.32.14.0.exists" />
+            <not>
+               <isset property="msvc.dir" />
+            </not>
+         </and>
+      </condition>
+      
+      <available property="msvc.64.14.0.exists" file="C:/Program Files (x86)/Microsoft Visual Studio 14.0\VC\bin" type="dir"/>
+      <condition property="msvc.dir" value="c:/Program Files (x86)/Microsoft Visual Studio 14.0">
+         <and>
+            <os family="windows" />
+            <isset property="msvc.64.14.0.exists" />
+            <not>
+               <isset property="msvc.dir" />
+            </not>
+         </and>
+      </condition>
+	  
 	  <available property="msvc.32.12.0.exists" file="C:/Program Files/Microsoft Visual Studio 12.0\VC\bin" type="dir"/>
       <condition property="msvc.dir" value="c:/Program Files/Microsoft Visual Studio 12.0">
          <and>
@@ -236,6 +258,17 @@ First consider editing the properties in build.properties
 	  <!-- Check for SDKs -->
 	  <!-- This needs to be in descending order to properly handle multiple installations -->
 	
+	  <available property="msvc.sdk.10.0A.64.exists" file="C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A" type="dir"/>
+      <condition property="msvc.sdk.dir" value="C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A">
+         <and>
+            <os family="windows" />
+            <isset property="msvc.sdk.10.0A.64.exists" />
+            <not>
+               <isset property="msvc.sdk.dir" />
+            </not>
+         </and>
+      </condition>
+      
       <available property="msvc.sdk.7.1A.32.exists" file="C:/Program Files/Microsoft SDKs/Windows/v7.1A" type="dir"/>
       <condition property="msvc.sdk.dir" value="C:/Program Files/Microsoft SDKs/Windows/v7.1A">
          <and>
@@ -695,8 +728,9 @@ First consider editing the properties in build.properties
          <arg value="/I${java.home}\..\include\win32" />
          <arg value="/Iinclude" />
 	     <arg value="/I${app.sdk.dir}\include" />
-         <arg value="/IC:\Program Files (x86)\Windows Kits\8.0\Include\shared" />
-         <arg value="/IC:\Program Files (x86)\Windows Kits\8.0\Include\um" />
+         <arg value="/IC:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\shared" />
+		 <arg value="/IC:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt" />
+         <arg value="/IC:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\um" />
          <arg value="/Isrc/cpp" />
          <arg value="/Isrc/cpp/runKernel" />
          <arg value="/Isrc/cpp/invoke" />
@@ -721,7 +755,8 @@ First consider editing the properties in build.properties
          <arg value="/libpath:${msvc.sdk.dir}\lib\${optional.x64.subdir}" />
 	 <arg value="/libpath:${app.sdk.dir}\lib\${x86_or_x86_64}" />
 	 <arg value="/libpath:${app.sdk.dir}\${optional.app.sdk.lib.subdir}" />
-         <arg value="/libpath:C:\Program Files (x86)\Windows Kits\8.0\Lib\win8\um\x64" />
+         <arg value="/libpath:C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\um\x64" />
+		 <arg value="/libpath:C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\ucrt\x64" />
          <arg value="OpenCL.lib" />
          <arg value="/out:${basedir}\dist\aparapi_${x86_or_x86_64}.dll" />
       </exec>
