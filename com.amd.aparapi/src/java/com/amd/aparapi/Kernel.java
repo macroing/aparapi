@@ -1852,203 +1852,6 @@ public abstract class Kernel implements Cloneable {
       return (1.0 / Math.sqrt(_d));
    }
 
-// Start of new additions...
-
-   private static final double LOG_2_RECIPROCAL = 1.0D / Math.log(2.0D);
-   private static final double PI_RECIPROCAL = 1.0D / Math.PI;
-
-   @OpenCLMapping(mapTo = "acospi")
-   protected final double acospi(final double a) {
-      return Math.acos(a) * PI_RECIPROCAL;
-   }
-
-   @OpenCLMapping(mapTo = "acospi")
-   protected final float acospi(final float a) {
-      return (float)(Math.acos(a) * PI_RECIPROCAL);
-   }
-
-   @OpenCLMapping(mapTo = "asinpi")
-   protected final double asinpi(final double a) {
-      return Math.asin(a) * PI_RECIPROCAL;
-   }
-
-   @OpenCLMapping(mapTo = "asinpi")
-   protected final float asinpi(final float a) {
-      return (float)(Math.asin(a) * PI_RECIPROCAL);
-   }
-
-   @OpenCLMapping(mapTo = "atanpi")
-   protected final double atanpi(final double a) {
-      return Math.atan(a) * PI_RECIPROCAL;
-   }
-
-   @OpenCLMapping(mapTo = "atanpi")
-   protected final float atanpi(final float a) {
-      return (float)(Math.atan(a) * PI_RECIPROCAL);
-   }
-
-   @OpenCLMapping(mapTo = "atan2pi")
-   protected final double atan2pi(final double y, final double x) {
-      return Math.atan2(y, x) * PI_RECIPROCAL;
-   }
-
-   @OpenCLMapping(mapTo = "atan2pi")
-   protected final float atan2pi(final float y, final double x) {
-      return (float)(Math.atan2(y, x) * PI_RECIPROCAL);
-   }
-
-   @OpenCLMapping(mapTo = "cbrt")
-   protected final double cbrt(final double a) {
-      return Math.cbrt(a);
-   }
-
-   @OpenCLMapping(mapTo = "cbrt")
-   protected final float cbrt(final float a) {
-      return (float)(Math.cbrt(a));
-   }
-
-   @OpenCLMapping(mapTo = "cosh")
-   protected final double cosh(final double x) {
-      return Math.cosh(x);
-   }
-
-   @OpenCLMapping(mapTo = "cosh")
-   protected final float cosh(final float x) {
-      return (float)(Math.cosh(x));
-   }
-
-   @OpenCLMapping(mapTo = "cospi")
-   protected final double cospi(final double a) {
-      return Math.cos(a * Math.PI);
-   }
-
-   @OpenCLMapping(mapTo = "cospi")
-   protected final float cospi(final float a) {
-      return (float)(Math.cos(a * Math.PI));
-   }
-
-   @OpenCLMapping(mapTo = "exp2")
-   protected final double exp2(final double a) {
-      return Math.pow(2.0D, a);
-   }
-
-   @OpenCLMapping(mapTo = "exp2")
-   protected final float exp2(final float a) {
-      return (float)(Math.pow(2.0D, a));
-   }
-
-   @OpenCLMapping(mapTo = "exp10")
-   protected final double exp10(final double a) {
-      return Math.pow(10.0D, a);
-   }
-
-   @OpenCLMapping(mapTo = "exp10")
-   protected final float exp10(final float a) {
-      return (float)(Math.pow(10.0D, a));
-   }
-
-   @OpenCLMapping(mapTo = "expm1")
-   protected final double expm1(final double x) {
-      return Math.expm1(x);
-   }
-
-   @OpenCLMapping(mapTo = "expm1")
-   protected final float expm1(final float x) {
-      return (float)(Math.expm1(x));
-   }
-
-   @OpenCLMapping(mapTo = "log2")
-   protected final double log2(final double a) {
-      return log(a) * LOG_2_RECIPROCAL;
-   }
-
-   @OpenCLMapping(mapTo = "log2")
-   protected final float log2(final float a) {
-      return (float)(log(a) * LOG_2_RECIPROCAL);
-   }
-
-   @OpenCLMapping(mapTo = "log10")
-   protected final double log10(final double a) {
-      return Math.log10(a);
-   }
-
-   @OpenCLMapping(mapTo = "log10")
-   protected final float log10(final float a) {
-      return (float)(Math.log10(a));
-   }
-
-   @OpenCLMapping(mapTo = "log1p")
-   protected final double log1p(final double x) {
-      return Math.log1p(x);
-   }
-
-   @OpenCLMapping(mapTo = "log1p")
-   protected final float log1p(final float x) {
-      return (float)(Math.log1p(x));
-   }
-
-   @OpenCLMapping(mapTo = "mad")
-   protected final double mad(final double a, final double b, final double c) {
-      return a * b + c;
-   }
-
-   @OpenCLMapping(mapTo = "mad")
-   protected final float mad(final float a, final float b, final float c) {
-      return a * b + c;
-   }
-
-   @OpenCLMapping(mapTo = "nextafter")
-   protected final double nextAfter(final double start, final double direction) {
-      return Math.nextAfter(start, direction);
-   }
-
-   @OpenCLMapping(mapTo = "nextafter")
-   protected final float nextAfter(final float start, final float direction) {
-      return (float)(Math.nextAfter(start, direction));
-   }
-
-   @OpenCLMapping(mapTo = "sinh")
-   protected final double sinh(final double x) {
-      return Math.sinh(x);
-   }
-
-   @OpenCLMapping(mapTo = "sinh")
-   protected final float sinh(final float x) {
-      return (float)(Math.sinh(x));
-   }
-
-   @OpenCLMapping(mapTo = "sinpi")
-   protected final double sinpi(final double a) {
-      return Math.sin(a * Math.PI);
-   }
-
-   @OpenCLMapping(mapTo = "sinpi")
-   protected final float sinpi(final float a) {
-      return (float)(Math.sin(a * Math.PI));
-   }
-
-   @OpenCLMapping(mapTo = "tanh")
-   protected final double tanh(final double x) {
-      return Math.tanh(x);
-   }
-
-   @OpenCLMapping(mapTo = "tanh")
-   protected final float tanh(final float x) {
-      return (float)(Math.tanh(x));
-   }
-
-   @OpenCLMapping(mapTo = "tanpi")
-   protected final double tanpi(final double a) {
-      return Math.tan(a * Math.PI);
-   }
-
-   @OpenCLMapping(mapTo = "tanpi")
-   protected final float tanpi(final float a) {
-      return (float)(Math.tan(a * Math.PI));
-   }
-
-// End of new additions.
-
    @OpenCLMapping(mapTo = "native_sqrt")
    private float native_sqrt(float _f) {
       int j = Float.floatToIntBits(_f);
@@ -2067,6 +1870,403 @@ public abstract class Kernel implements Cloneable {
       // float fhalf = 0.5f*_f;
       // return (x *(1.5f - fhalf * x * x));
    }
+
+// Start of new additions...
+
+   private static final double LOG_2_RECIPROCAL = 1.0D / Math.log(2.0D);
+   private static final double PI_RECIPROCAL = 1.0D / Math.PI;
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "acospi")
+   protected final double acospi(final double a) {
+      return Math.acos(a) * PI_RECIPROCAL;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "acospi")
+   protected final float acospi(final float a) {
+      return (float)(Math.acos(a) * PI_RECIPROCAL);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "asinpi")
+   protected final double asinpi(final double a) {
+      return Math.asin(a) * PI_RECIPROCAL;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "asinpi")
+   protected final float asinpi(final float a) {
+      return (float)(Math.asin(a) * PI_RECIPROCAL);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "atanpi")
+   protected final double atanpi(final double a) {
+      return Math.atan(a) * PI_RECIPROCAL;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "atanpi")
+   protected final float atanpi(final float a) {
+      return (float)(Math.atan(a) * PI_RECIPROCAL);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "atan2pi")
+   protected final double atan2pi(final double y, final double x) {
+      return Math.atan2(y, x) * PI_RECIPROCAL;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "atan2pi")
+   protected final float atan2pi(final float y, final double x) {
+      return (float)(Math.atan2(y, x) * PI_RECIPROCAL);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#cbrt(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param a value to delegate to {@link java.lang.Math#cbrt(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(double)</a></code>
+    * @return {@link java.lang.Math#cbrt(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(double)</a></code>
+    * 
+    * @see java.lang.Math#cbrt(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "cbrt")
+   protected final double cbrt(final double a) {
+      return Math.cbrt(a);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#cbrt(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param a value to delegate to {@link java.lang.Math#cbrt(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(float)</a></code>
+    * @return {@link java.lang.Math#cbrt(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(float)</a></code>
+    * 
+    * @see java.lang.Math#cbrt(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cbrt.html">cbrt(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "cbrt")
+   protected final float cbrt(final float a) {
+      return (float)(Math.cbrt(a));
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#cosh(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#cosh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(double)</a></code>
+    * @return {@link java.lang.Math#cosh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(double)</a></code>
+    * 
+    * @see java.lang.Math#cosh(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "cosh")
+   protected final double cosh(final double x) {
+      return Math.cosh(x);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#cosh(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#cosh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(float)</a></code>
+    * @return {@link java.lang.Math#cosh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(float)</a></code>
+    * 
+    * @see java.lang.Math#cosh(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/cos.html">cosh(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "cosh")
+   protected final float cosh(final float x) {
+      return (float)(Math.cosh(x));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "cospi")
+   protected final double cospi(final double a) {
+      return Math.cos(a * Math.PI);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "cospi")
+   protected final float cospi(final float a) {
+      return (float)(Math.cos(a * Math.PI));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "exp2")
+   protected final double exp2(final double a) {
+      return Math.pow(2.0D, a);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "exp2")
+   protected final float exp2(final float a) {
+      return (float)(Math.pow(2.0D, a));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "exp10")
+   protected final double exp10(final double a) {
+      return Math.pow(10.0D, a);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "exp10")
+   protected final float exp10(final float a) {
+      return (float)(Math.pow(10.0D, a));
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#expm1(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#expm1(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(double)</a></code>
+    * @return {@link java.lang.Math#expm1(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(double)</a></code>
+    * 
+    * @see java.lang.Math#expm1(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "expm1")
+   protected final double expm1(final double x) {
+      return Math.expm1(x);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#expm1(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#expm1(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(float)</a></code>
+    * @return {@link java.lang.Math#expm1(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(float)</a></code>
+    * 
+    * @see java.lang.Math#expm1(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/exp.html">expm1(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "expm1")
+   protected final float expm1(final float x) {
+      return (float)(Math.expm1(x));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "log2")
+   protected final double log2(final double a) {
+      return log(a) * LOG_2_RECIPROCAL;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "log2")
+   protected final float log2(final float a) {
+      return (float)(log(a) * LOG_2_RECIPROCAL);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#log10(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param a value to delegate to {@link java.lang.Math#log10(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(double)</a></code>
+    * @return {@link java.lang.Math#log10(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(double)</a></code>
+    * 
+    * @see java.lang.Math#log10(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "log10")
+   protected final double log10(final double a) {
+      return Math.log10(a);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#log10(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param a value to delegate to {@link java.lang.Math#log10(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(float)</a></code>
+    * @return {@link java.lang.Math#log10(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(float)</a></code>
+    * 
+    * @see java.lang.Math#log10(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log10(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "log10")
+   protected final float log10(final float a) {
+      return (float)(Math.log10(a));
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#log1p(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#log1p(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(double)</a></code>
+    * @return {@link java.lang.Math#log1p(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(double)</a></code>
+    * 
+    * @see java.lang.Math#log1p(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "log1p")
+   protected final double log1p(final double x) {
+      return Math.log1p(x);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#log1p(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#log1p(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(float)</a></code>
+    * @return {@link java.lang.Math#log1p(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(float)</a></code>
+    * 
+    * @see java.lang.Math#log1p(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">log1p(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "log1p")
+   protected final float log1p(final float x) {
+      return (float)(Math.log1p(x));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "mad")
+   protected final double mad(final double a, final double b, final double c) {
+      return a * b + c;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "mad")
+   protected final float mad(final float a, final float b, final float c) {
+      return a * b + c;
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#nextAfter(double, double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(double, double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param start value to delegate to first argument of {@link java.lang.Math#nextAfter(double, double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(double, double)</a></code>
+    * @param direction value to delegate to second argument of {@link java.lang.Math#nextAfter(double, double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(double, double)</a></code>
+    * @return {@link java.lang.Math#nextAfter(double, double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(double, double)</a></code>
+    * 
+    * @see java.lang.Math#nextAfter(double, double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">nextafter(double, double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "nextafter")
+   protected final double nextAfter(final double start, final double direction) {
+      return Math.nextAfter(start, direction);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#nextAfter(double, double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(float, float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param start value to delegate to first argument of {@link java.lang.Math#nextAfter(double, double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(float, float)</a></code>
+    * @param direction value to delegate to second argument of {@link java.lang.Math#nextAfter(double, double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(float, float)</a></code>
+    * @return {@link java.lang.Math#nextAfter(double, double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/nextafter.html">nextafter(float, float)</a></code>
+    * 
+    * @see java.lang.Math#nextAfter(double, double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/log.html">nextafter(float, float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "nextafter")
+   protected final float nextAfter(final float start, final float direction) {
+      return (float)(Math.nextAfter(start, direction));
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#sinh(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#sinh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(double)</a></code>
+    * @return {@link java.lang.Math#sinh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(double)</a></code>
+    * 
+    * @see java.lang.Math#sinh(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "sinh")
+   protected final double sinh(final double x) {
+      return Math.sinh(x);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#sinh(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#sinh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(float)</a></code>
+    * @return {@link java.lang.Math#sinh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(float)</a></code>
+    * 
+    * @see java.lang.Math#sinh(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">sinh(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "sinh")
+   protected final float sinh(final float x) {
+      return (float)(Math.sinh(x));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "sinpi")
+   protected final double sinpi(final double a) {
+      return Math.sin(a * Math.PI);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "sinpi")
+   protected final float sinpi(final float a) {
+      return (float)(Math.sin(a * Math.PI));
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#tanh(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(double)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#tanh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(double)</a></code>
+    * @return {@link java.lang.Math#tanh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(double)</a></code>
+    * 
+    * @see java.lang.Math#tanh(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(double)</a></code>
+    */
+   @OpenCLMapping(mapTo = "tanh")
+   protected final double tanh(final double x) {
+      return Math.tanh(x);
+   }
+
+   /**
+    * Delegates to either {@link java.lang.Math#tanh(double)} (Java) or <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(float)</a></code> (OpenCL).
+    * 
+    * User should note the differences in precision between Java and OpenCL's implementation of arithmetic functions to determine whether the difference in precision is acceptable.
+    * 
+    * @param x value to delegate to {@link java.lang.Math#tanh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(float)</a></code>
+    * @return {@link java.lang.Math#tanh(double)}/<code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(float)</a></code>
+    * 
+    * @see java.lang.Math#tanh(double)
+    * @see <code><a href="http://www.khronos.org/registry/cl/sdk/1.1/docs/man/xhtml/sin.html">tanh(float)</a></code>
+    */
+   @OpenCLMapping(mapTo = "tanh")
+   protected final float tanh(final float x) {
+      return (float)(Math.tanh(x));
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "tanpi")
+   protected final double tanpi(final double a) {
+      return Math.tan(a * Math.PI);
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "tanpi")
+   protected final float tanpi(final float a) {
+      return (float)(Math.tan(a * Math.PI));
+   }
+
+// End of new additions.
 
    // Hacked from AtomicIntegerArray.getAndAdd(i, delta)
    /**
