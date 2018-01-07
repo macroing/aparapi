@@ -1,11 +1,13 @@
 aparapi
 =======
 
-This is the new home of Aparapi.
+This is the official home of AMD's Aparapi. Please see http://developer.amd.com/tools-and-sdks/open-source/ for additional AMD open source contributions.
+
+NOTE: This site and source code is not affiliated with www.aparapi.com
 
 Please refer to the [current documentation](doc/README.md) or the older docs on google code [Aparapi Google Code](https://code.google.com/p/aparapi/) for documentation.
 
-We plan to implement Binary downloads at [GitHub Releases](https://help.github.com/articles/about-releases).
+Binary downloads at [Maven Central](http://central.sonatype.org/) coming soon!
 
 Watch this space!
 
@@ -22,7 +24,7 @@ Download known working binary releases from [Aparapi Releases](https://github.co
 
 Developers:
 
-Every single project in Aparapi, including the root of the entire repository are Eclipse projects, althought execution entirely from the command-line is also supported.
+Every single project in Aparapi, including the root of the entire repository are Eclipse projects, although execution purely from the command-line is also supported.
 
 Steps:
 
