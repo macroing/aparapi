@@ -559,6 +559,67 @@ public abstract class KernelWriter extends BlockWriter{
       write("}");
       newLine();
 
+      //Function Declarations - Start:
+	  for (final MethodModel mm : _entryPoint.getCalledMethods()) {
+         // write declaration :)
+         if (mm.isPrivateMemoryGetter()) {
+            continue;
+         }
+
+         final String returnType = mm.getReturnType();
+         // Arrays always map to __private or__global arrays
+         if (returnType.startsWith("[")) {
+            write(" __global ");
+         }
+         write(convertType(returnType, true));
+
+         write(mm.getName() + "(");
+
+         if (!mm.getMethod().isStatic()) {
+            if ((mm.getMethod().getClassModel() == _entryPoint.getClassModel())
+                  || mm.getMethod().getClassModel().isSuperClass(_entryPoint.getClassModel().getClassWeAreModelling())) {
+               write("This *this");
+            } else {
+               // Call to an object member or superclass of member
+               for (final ClassModel c : _entryPoint.getObjectArrayFieldsClasses().values()) {
+                  if (mm.getMethod().getClassModel() == c) {
+                     write("__global " + mm.getMethod().getClassModel().getClassWeAreModelling().getName().replace('.', '_')
+                           + " *this");
+                     break;
+                  } else if (mm.getMethod().getClassModel().isSuperClass(c.getClassWeAreModelling())) {
+                     write("__global " + c.getClassWeAreModelling().getName().replace('.', '_') + " *this");
+                     break;
+                  }
+               }
+            }
+         }
+
+         boolean alreadyHasFirstArg = !mm.getMethod().isStatic();
+
+         final LocalVariableTableEntry<LocalVariableInfo> lvte = mm.getLocalVariableTableEntry();
+         for (final LocalVariableInfo lvi : lvte) {
+            if ((lvi.getStart() == 0) && ((lvi.getVariableIndex() != 0) || mm.getMethod().isStatic())) { // full scope but skip this
+               final String descriptor = lvi.getVariableDescriptor();
+               if (alreadyHasFirstArg) {
+                  write(", ");
+               }
+
+               // Arrays always map to __global arrays
+               if (descriptor.startsWith("[")) {
+                  write(" __global ");
+               }
+
+               write(convertType(descriptor, true));
+               write(lvi.getVariableName());
+               alreadyHasFirstArg = true;
+            }
+         }
+         write(")");
+         write(";");
+         newLine();
+      }
+      //Function Declarations - End:
+
       for (final MethodModel mm : _entryPoint.getCalledMethods()) {
          // write declaration :)
          if (mm.isPrivateMemoryGetter()) {
