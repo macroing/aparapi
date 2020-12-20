@@ -2266,6 +2266,18 @@ public abstract class Kernel implements Cloneable {
       return (float)(Math.tan(a * Math.PI));
    }
 
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "fmod")
+   protected final double fmod(final double x, final double y) {
+      return x % y;
+   }
+
+// TODO: Add Javadocs!
+   @OpenCLMapping(mapTo = "fmod")
+   protected final float fmod(final float x, final float y) {
+      return x % y;
+   }
+
 // End of new additions.
 
    // Hacked from AtomicIntegerArray.getAndAdd(i, delta)
